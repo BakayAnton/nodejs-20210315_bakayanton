@@ -19,8 +19,8 @@ class LineSplitStream extends stream.Transform {
     // console.log(lines);
     for (let i = 0; i < lines.length - 1; i++) {
       // console.log('value: ', lines[i]);
-      // only one callback per chunk. Use emit instead.
-      this.emit('data', lines[i]);
+      // in case you need to send data several times per chunk use .push
+      this.push(lines[i]);
       // callback(null, lines[i]);
     }
     this.tempData = lines[lines.length-1];
